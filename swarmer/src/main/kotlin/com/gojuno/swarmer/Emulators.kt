@@ -19,7 +19,7 @@ import java.util.concurrent.TimeoutException
 import java.util.concurrent.atomic.AtomicLong
 
 val sh: String = "/bin/sh"
-val avdManager: String = "$androidHome/tools/bin/avdmanager"
+val avdManager: String = "$androidHome/cmdline-tools/latest/bin/avdmanager"
 val emulator = "$androidHome/emulator/emulator"
 val emulatorCompat = "$androidHome/tools/emulator"
 
