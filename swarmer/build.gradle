@@ -3,7 +3,6 @@ apply plugin: 'application'
 apply plugin: 'org.junit.platform.gradle.plugin'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
 
 mainClassName = 'com.gojuno.swarmer.MainKt'
 
@@ -62,7 +61,7 @@ task validatePublishing {
     }
 }
 
-bintrayUpload.dependsOn validatePublishing
+// bintrayUpload.dependsOn validatePublishing
 
 def pomConfig = {
     licenses {
@@ -104,27 +103,3 @@ publishing {
     }
 }
 
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_API_KEY')
-    publish = true
-
-    pkg {
-        repo = 'maven'
-        name = 'swarmer'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/gojuno/swarmer.git'
-        issueTrackerUrl = 'https://github.com/gojuno/swarmer/issues'
-        publications = ['SwarmerPublication']
-
-        version {
-            name = projectVersion()
-            vcsTag = gitTag()
-
-            gpg {
-                sign = true
-                passphrase = System.getenv('BINTRAY_GPG_PASSPHRASE')
-            }
-        }
-    }
-}
