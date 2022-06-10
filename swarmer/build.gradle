@@ -61,8 +61,6 @@ task validatePublishing {
     }
 }
 
-// bintrayUpload.dependsOn validatePublishing
-
 def pomConfig = {
     licenses {
         license {
